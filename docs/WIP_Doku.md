@@ -73,7 +73,7 @@
 ##### Adatmodell
 
 ##### Adatbázisterv
-![Adtabazis](images/database.png)
+![Adtabazis](images/Database.png)
 
 ##### Állapotdiagram
 
