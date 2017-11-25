@@ -1,6 +1,11 @@
-CREATE SCHEMA `alkfejl` ;
+DROP TABLE `alkfejl`.`rec_ing`;
+DROP TABLE `alkfejl`.`recipes`;
+DROP TABLE `alkfejl`.`ingredients`;
+DROP TABLE `alkfejl`.`users`;
 
-CREATE TABLE `alkfejl`.`users` (
+CREATE OR REPLACE SCHEMA `alkfejl` ;
+
+CREATE OR REPLACE TABLE `alkfejl`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NOT NULL,
   `password` VARCHAR(50) NOT NULL,
@@ -8,7 +13,7 @@ CREATE TABLE `alkfejl`.`users` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC));
 
-CREATE TABLE `alkfejl`.`recipes` (
+CREATE OR REPLACE TABLE `alkfejl`.`recipes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `owner_id` INT NOT NULL,
@@ -21,14 +26,14 @@ CREATE TABLE `alkfejl`.`recipes` (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
-CREATE TABLE `alkfejl`.`ingredients` (
+CREATE OR REPLACE TABLE `alkfejl`.`ingredients` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC));
 
-CREATE TABLE `alkfejl`.`rec_ing` (
+CREATE OR REPLACE TABLE `alkfejl`.`rec_ing` (
   `rec_id` INT NOT NULL,
   `ing_id` INT NOT NULL,
   PRIMARY KEY (`rec_id`, `ing_id`),
