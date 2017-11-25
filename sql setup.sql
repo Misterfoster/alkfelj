@@ -1,4 +1,5 @@
 DROP TABLE `alkfejl`.`rec_ing`;
+DROP TABLE `alkfejl`.`comments`;
 DROP TABLE `alkfejl`.`recipes`;
 DROP TABLE `alkfejl`.`ingredients`;
 DROP TABLE `alkfejl`.`users`;
@@ -35,6 +36,28 @@ CREATE OR REPLACE TABLE `alkfejl`.`ingredients` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC));
+
+CREATE OR REPLACE TABLE `alkfejl`.`comments` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `comment` VARCHAR(500) NOT NULL,
+  `time` DATETIME NOT NULL,
+  `rec_id` INT NOT NULL,
+  `owner_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `rec_id_idx` (`rec_id` ASC),
+  INDEX `owner_id_idx` (`owner_id` ASC),
+  CONSTRAINT `fk_rec_id`
+    FOREIGN KEY (`rec_id`)
+    REFERENCES `alkfejl`.`recipes` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_owner_id`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `alkfejl`.`users` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
 
 CREATE OR REPLACE TABLE `alkfejl`.`rec_ing` (
   `rec_id` INT NOT NULL,
