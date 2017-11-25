@@ -12,7 +12,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -38,4 +41,17 @@ public class UserController {
         });
         return users;
     }
+
+    @RequestMapping(value = "/addUser",method = RequestMethod.POST)
+	public void addUser(@RequestParam(value="username", required=true) String username,
+                            @RequestParam(value="password", required=true) String password){
+            log.info("Adding user: "+username+" "+password);
+            
+           
+            String insertQuery = "INSERT INTO `alkfejl`.`users`(`username`,`password`)VALUES('%s','%s');";
+            insertQuery = String.format(insertQuery,username,password);
+            
+            jdbcTemplate.execute(insertQuery);
+            
+        }
 }
