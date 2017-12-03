@@ -11,5 +11,10 @@ public class NavigationController {
     public String index() {
         return "welcome";
     }
+    
+    @RequestMapping("/recipes")
+    public String recipes() {
+        return "recipes";
+    }
  
 }

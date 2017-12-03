@@ -21,11 +21,19 @@ and open the template in the editor.
 }
 
 #logo {
-    padding-top: 20px;
+    padding-top: 20px; 
 }
 
 input {
   -webkit-border-radius: 1px;
      -moz-border-radius: 1px;
           border-radius: 1px;
+}
+
+.recipe-table th {
+    text-align: left;
+}
+
+.expand-button {
+    width: 100%;
 }
