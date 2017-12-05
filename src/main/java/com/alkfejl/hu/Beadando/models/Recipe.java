@@ -91,6 +91,10 @@ public long getCookTimeInSeconds(){
         return seconds;
     }
 
+    public long getFullTime(){
+        return getPrepTimeInSeconds()+getCookTimeInSeconds();
+    }
+
     @Override
     public String toString() {
         return "Recipe{" +

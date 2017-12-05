@@ -1,6 +1,7 @@
 package com.alkfejl.hu.Beadando.controllers;
 
 import com.alkfejl.hu.Beadando.BeadandoApplication;
+import com.alkfejl.hu.Beadando.models.FullRecipe;
 import com.alkfejl.hu.Beadando.models.Recipe;
 import com.alkfejl.hu.Beadando.models.User;
 import org.slf4j.Logger;
@@ -42,6 +43,7 @@ public class RecipeController {
         });
         return recipes;
     }
+
 
 
 }
