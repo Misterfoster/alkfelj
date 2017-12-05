@@ -17,20 +17,24 @@ and open the template in the editor.
 
     </head>
     <body>
-        <div id="main">
+        <div *ngIf="loggedin==false" id="main">
 
             <img id="logo" src="assets/tpb.jpg">
 
             <form id="loginform">
-                <input class="form-control" type="text" placeholder="Enter Username" name="uname" required>
-                <input class="form-control" type="password" placeholder="Enter Password" name="psw" required>
+                <input [(ngModel)]="user.username" class="form-control" type="text" placeholder="Enter Username" name="uname" required>
+                <input [(ngModel)]="user.password" class="form-control" type="password" placeholder="Enter Password" name="psw" required>
 
                 <br>
-                <button class="btn btn-primary btn-round" id="loginButton" type="button">Login</button>
+                <button class="btn btn-primary btn-round" id="loginButton" type="button" (click)="onLogin()">Login</button>
                 <button class="btn btn-warning btn-round" id="registerButton" type="button">Register</button>
 
             </form>
         </div>
+		<div *ngIf="loggedin==true">
+			<h2>Hello {{userField.username}}</h2>
+			<app-recipes ></app-recipes>
+		</div>
 
     </body>
 </html>

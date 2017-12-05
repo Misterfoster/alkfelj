@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger(BeadandoApplication.class);
@@ -53,8 +55,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void addUser(@RequestParam(value = "username", required = true) String username,
-            @RequestParam(value = "password", required = true) String password) {
+    public void addUser(@RequestBody User userParam) {
+        String username = userParam.getUsername();
+        String password = userParam.getPassword();
         log.info("Adding user: " + username + " " + password);
 
         String insertQuery = "INSERT INTO `alkfejl`.`users`(`username`,`password`)VALUES('%s','%s');";
@@ -65,9 +68,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public boolean login(@RequestParam(value = "username", required = true) String username,
-            @RequestParam(value = "password", required = true) String password) {
-        log.info("Trying to login user: " + username + " " + password);
+    public boolean login(@RequestBody User userParam) {
+        String username = userParam.getUsername();
+        String password = userParam.getPassword();
+        log.debug("Trying to login user: " + username + " " + password);
 
         String query = "SELECT * FROM users where username='%s'";
         User user;
