@@ -1,0 +1,105 @@
+package com.alkfejl.hu.Beadando.models;
+
+/**
+ * Created by D on 2017. 12. 05..
+ */
+public class Recipe {
+    private long id;
+    private String name;
+    private String directions;
+    private String prepTime;
+    private String cookTime;
+    private long ownerId;
+
+    public Recipe(long id, String name, String directions, String prepTime, String cookTime, long ownerId) {
+        this.id = id;
+        this.name = name;
+        this.directions = directions;
+        this.prepTime = prepTime;
+        this.cookTime = cookTime;
+        this.ownerId = ownerId;
+    }
+
+    public Recipe() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDirections() {
+        return directions;
+    }
+
+    public void setDirections(String directions) {
+        this.directions = directions;
+    }
+
+    public String getPrepTime() {
+        return prepTime;
+    }
+
+    public void setPrepTime(String prepTime) {
+        this.prepTime = prepTime;
+    }
+
+    public String getCookTime() {
+        return cookTime;
+    }
+
+    public void setCookTime(String cookTime) {
+        this.cookTime = cookTime;
+    }
+
+    public long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public long getPrepTimeInSeconds(){
+
+        long seconds = 0;
+        seconds+=Long.parseLong(prepTime.split(":")[2]);
+        seconds+=Long.parseLong(prepTime.split(":")[1])*60;
+        seconds+=Long.parseLong(prepTime.split(":")[0])*60*60;
+
+        return seconds;
+    }
+
+public long getCookTimeInSeconds(){
+
+        long seconds = 0;
+        seconds+=Long.parseLong(cookTime.split(":")[2]);
+        seconds+=Long.parseLong(cookTime.split(":")[1])*60;
+        seconds+=Long.parseLong(cookTime.split(":")[0])*60*60;
+
+        return seconds;
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", directions='" + directions + '\'' +
+                ", prepTime='" + prepTime + '\'' +
+                ", cookTime='" + cookTime + '\'' +
+                ", ownerId=" + ownerId +
+                '}';
+    }
+}
