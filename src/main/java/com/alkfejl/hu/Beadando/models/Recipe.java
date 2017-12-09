@@ -9,18 +9,18 @@ public class Recipe {
     private String directions;
     private String prepTime;
     private String cookTime;
-    private long ownerId;
+    private String ownerName;
 
-    public Recipe(long id, String name, String directions, String prepTime, String cookTime, long ownerId) {
+    public Recipe(long id, String name, String directions, String prepTime, String cookTime, String ownerName) {
         this.id = id;
         this.name = name;
         this.directions = directions;
         this.prepTime = prepTime;
         this.cookTime = cookTime;
-        this.ownerId = ownerId;
+        this.ownerName = ownerName;
     }
+    public Recipe(){
 
-    public Recipe() {
     }
 
     public long getId() {
@@ -63,12 +63,12 @@ public class Recipe {
         this.cookTime = cookTime;
     }
 
-    public long getOwnerId() {
-        return ownerId;
+    public String getOwnerName() {
+        return ownerName;
     }
 
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
     public long getPrepTimeInSeconds(){
@@ -103,7 +103,7 @@ public long getCookTimeInSeconds(){
                 ", directions='" + directions + '\'' +
                 ", prepTime='" + prepTime + '\'' +
                 ", cookTime='" + cookTime + '\'' +
-                ", ownerId=" + ownerId +
+                ", ownerName='" + ownerName + '\'' +
                 '}';
     }
 }

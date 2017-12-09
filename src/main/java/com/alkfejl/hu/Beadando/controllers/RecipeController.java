@@ -26,24 +26,26 @@ public class RecipeController {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    @RequestMapping("/debug/recipes")
+    @RequestMapping("/recipes")
     public List<Recipe> getRecipes() {
 
         log.info("Querying for recipes");
 
+        String query="SELECT r.id, r.name as recipe_name, r.directions, r.preptime, r.cooktime, u.username as recipe_by from ingredients i, rec_ing ri, recipes r, users u\n" +
+                "where 1=1\n" +
+                "and u.id = r.owner_id\n" +
+                "and 'bread' in (select i.name from ingredients i, rec_ing ri, recipes r where ri.ing_id = i.id and ri.rec_id = r.id)\n" +
+                "group by r.name";
+
         List<Recipe> recipes = new ArrayList<>();
-        jdbcTemplate.query(
-                "SELECT id, name, directions, preptime, cooktime,owner_id FROM recipes",
+        jdbcTemplate.query(query,
                 (rs, rowNum) ->
-                        new Recipe(rs.getLong("id"), rs.getString("name"), rs.getString("directions"),
-                                rs.getString("preptime"), rs.getString("cooktime"),rs.getLong("owner_id"))
+                        new Recipe(rs.getLong("id"), rs.getString("recipe_name"), rs.getString("directions"),
+                                rs.getString("preptime"), rs.getString("cooktime"),rs.getString("recipe_by"))
         ).forEach(recipe -> {
             log.info(recipe.toString());
             recipes.add(recipe);
         });
         return recipes;
     }
-
-
-
 }

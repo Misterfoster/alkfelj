@@ -7,13 +7,15 @@ import { HttpModule, Http, Response, Headers  } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { RecipetemplateComponent } from './recipetemplate/recipetemplate.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginpageComponent,
-    RecipesComponent
+    RecipesComponent,
+    RecipetemplateComponent
   ],
   imports: [
     BrowserModule,

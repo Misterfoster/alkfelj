@@ -27,10 +27,7 @@ and open the template in the editor.
                             Recipe Name
                         </th>
                         <th>
-                            Preparation Time
-                        </th>
-                        <th>
-                            Cook Time
+                            Time to finish
                         </th>
                         <th>
                             Submitted By
@@ -40,26 +37,10 @@ and open the template in the editor.
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            Gulas Test
-                        </td>
-                        <td>
-                            0:00Test
-                        </td>
-                        <td>
-                            0:00Test
-                        </td>
-                        <td>
-                            dbwtest
-                        </td>
-                        <td>
-                             <button class="btn btn-primary btn-round expand-button" type="button">Expand</button>
-                        </td>
-                    </tr>
-                </tbody>
+              <tr *ngFor="let recipe of recipeList" [actrec]="recipe" recipetr></tr>
+
             </table>
+
             <h1>.</h1>
             <h1>.</h1>
             <h1>.</h1>
