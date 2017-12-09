@@ -2,15 +2,14 @@ package com.alkfejl.hu.Beadando.controllers;
 
 import com.alkfejl.hu.Beadando.BeadandoApplication;
 import com.alkfejl.hu.Beadando.models.FullRecipe;
+import com.alkfejl.hu.Beadando.models.Ingredient;
 import com.alkfejl.hu.Beadando.models.Recipe;
 import com.alkfejl.hu.Beadando.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +35,37 @@ public class RecipeController {
                 "and u.id = r.owner_id\n" +
                 "and 'bread' in (select i.name from ingredients i, rec_ing ri, recipes r where ri.ing_id = i.id and ri.rec_id = r.id)\n" +
                 "group by r.name";
+
+        List<Recipe> recipes = new ArrayList<>();
+        jdbcTemplate.query(query,
+                (rs, rowNum) ->
+                        new Recipe(rs.getLong("id"), rs.getString("recipe_name"), rs.getString("directions"),
+                                rs.getString("preptime"), rs.getString("cooktime"),rs.getString("recipe_by"))
+        ).forEach(recipe -> {
+            log.info(recipe.toString());
+            recipes.add(recipe);
+        });
+        return recipes;
+    }
+
+    @RequestMapping(value="/queryByIngredient", method = RequestMethod.POST)
+    public List<Recipe> queryForRecipes(@RequestBody List<Ingredient> ingredientParam) {
+
+        log.info("Querying for recipes by ingredients");
+
+        String query = "SELECT r.id, r.name as recipe_name, r.directions, r.preptime, r.cooktime, u.username as recipe_by from ingredients i, rec_ing ri, recipes r, users u\n" +
+                        "where 1=1\n" +
+                        "and u.id = r.owner_id\n" +
+                        "and ri.rec_id = r.id\n" +
+                        "and ri.ing_id = i.id\n";
+
+                for (Ingredient i : ingredientParam){
+                    query+= "and r.id in (select r.id from ingredients i, rec_ing ri, recipes r where 1=1 and i.name like '%"+ i.getName() + "%' and ri.rec_id = r.id and ri.ing_id = i.id)\n";
+                }
+
+                query+="group by r.name";
+
+        log.info("running query: " + query);
 
         List<Recipe> recipes = new ArrayList<>();
         jdbcTemplate.query(query,

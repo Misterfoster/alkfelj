@@ -40,5 +40,4 @@ export class RecipesComponent implements OnInit {
 
     console.log("receptlistafromdb",this.recipeList);
   }
-
 }
