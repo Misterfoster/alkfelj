@@ -4,3 +4,4 @@ export class RecipeModel {
   full_time: string;
   recipe_by: string;
 }
+

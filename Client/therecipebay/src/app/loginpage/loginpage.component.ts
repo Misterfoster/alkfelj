@@ -40,7 +40,6 @@ user: UserModel = {
 		}
 
 
-
   ngOnInit() {
   }
 
