@@ -21,28 +21,29 @@ and open the template in the editor.
             <h1>Welcome to The Recipe Bay</h1>
             <h4>Your #1 source for recipes</h4>
             <table class="recipe-table table table-bordered table-hover table-responsive">
-                <thead>
-                    <tr>
-                        <th>
-                            Recipe Name
-                        </th>
-                        <th>
-                            Time to finish
-                        </th>
-                        <th>
-                            Submitted By
-                        </th>
-                        <th>
+              <thead>
+              <tr>
+                <th>
+                  Recipe Name
+                </th>
+                <th>
+                  Time to finish
+                </th>
+                <th>
+                  Submitted By
+                </th>
+                <th>
 
-                        </th>
-                    </tr>
+                </th>
+              </tr>
                 </thead>
-              <div id="myModal" class="modal" recipedetailtemplate></div>
 
 
-              <tr *ngFor="let recipe of recipeList" [actrec]="recipe" recipetr></tr>
+              <tr *ngFor="let recipe of recipeList"  [showPopup]="showPopup" [actrec]="recipe" (recipeDetailEvent)="onRecipe($event)" (notify)='onNotify($event)' recipetr></tr>
+
 
             </table>
+            <app-recipedetailtemplate [actualRecipe]="actualRecipe" (notify)='onNotify($event)' *ngIf="showPopup==true"></app-recipedetailtemplate>
 
             <h1>.</h1>
             <h1>.</h1>
