@@ -18,24 +18,54 @@ user: UserModel = {
   private contextRoot = 'http://localhost:8080/api'
   url : string;
   loggedin: boolean;
+  registered: boolean;
 
+  displayError : boolean = false;
+  errorText : string ="";
 
   userField : UserModel;
 
   onLogin() : void{
 	  this.userField= this.user;
-	  //this.loggedin = true;
 	  this.tryLogin();
-	  if (this.loggedin == false){
-		  console.log("failed to login");
-	  }
+  }
+
+  onRegister() : void{
+    this.userField= this.user;
+    this.tryRegister();
+  }
+
+  tryRegister() : void {
+    this.url = "/register";
+    this.http.post(this.contextRoot+this.url, this.userField).subscribe(res =>{
+      this.registered=(res.text()=="true")
+      if (this.registered==true) {
+        this.loggedin = true;
+        this.displayError=false;
+        this.errorText="";
+      } else {
+        this.loggedin = false;
+        this.displayError = true;
+        this.errorText = "Failed to register. maybe you are already registered?"
+      }
+
+    });
+
   }
 
 
 
-	 tryLogin() : any {
+	 tryLogin() : void {
 		this.url = "/login";
-		this.http.post(this.contextRoot+this.url, this.userField).subscribe(res => this.loggedin=(res.text()=="true") );
+		this.http.post(this.contextRoot+this.url, this.userField).subscribe(res =>{
+      this.loggedin=(res.text()=="true")
+		  if (this.loggedin == false) {
+      this.displayError = true;
+      this.errorText = "Failed to login, maybe. Your username or password is invalid or something."
+    } else {
+      this.displayError=false;
+      this.errorText="";
+    }});
 
 		}
 

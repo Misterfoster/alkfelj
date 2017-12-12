@@ -55,7 +55,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void addUser(@RequestBody User userParam) {
+    public boolean addUser(@RequestBody User userParam) {
         String username = userParam.getUsername();
         String password = userParam.getPassword();
         log.info("Adding user: " + username + " " + password);
@@ -63,7 +63,14 @@ public class UserController {
         String insertQuery = "INSERT INTO `alkfejl`.`users`(`username`,`password`)VALUES('%s','%s');";
         insertQuery = String.format(insertQuery, username, password);
 
-        jdbcTemplate.execute(insertQuery);
+        try {
+            jdbcTemplate.execute(insertQuery);
+            log.info("successfully registered");
+            return true;
+        } catch (Exception e){
+            log.error("something went wrong");
+            return false;
+        }
 
     }
 

@@ -108,4 +108,24 @@ public class RecipeController {
     }
 
 
+    @RequestMapping(value="/getingredientsbyrecid",method = RequestMethod.POST)
+    public List<Ingredient> getIngredientsByRecipeId(@RequestBody String id) {
+
+        log.info("Querying for ingredients with id:"+id);
+
+        String query="select  i.name, ri.amount, ri.unit  from ingredients i, recipes r, rec_ing ri " +
+                    "where ri.rec_id=r.id and ri.ing_id=i.id and r.id="+id;
+
+        log.info("the query is: "+query);
+        List<Ingredient> ingredients = new ArrayList<>();
+        jdbcTemplate.query(query,
+                (rs, rowNum) ->
+                        new Ingredient(rs.getString("name"),rs.getString("unit"),rs.getInt("amount"))
+        ).forEach(recipe -> {
+            log.info(recipe.toString());
+            ingredients.add(recipe);
+        });
+        return ingredients;
+    }
+
 }

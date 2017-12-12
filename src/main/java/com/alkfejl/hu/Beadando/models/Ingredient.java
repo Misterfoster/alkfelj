@@ -4,16 +4,17 @@ package com.alkfejl.hu.Beadando.models;
  * Created by D on 2017. 12. 05..
  */
 public class Ingredient {
-    private long id;
     private String name;
+    private String unit;
+    private double amount;
 
-
-    public long getId() {
-        return id;
+    public Ingredient(String name, String unit, double amount) {
+        this.name = name;
+        this.unit = unit;
+        this.amount = amount;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Ingredient() {
     }
 
     public String getName() {
@@ -24,19 +25,28 @@ public class Ingredient {
         this.name = name;
     }
 
-    public Ingredient() {
+    public String getUnit() {
+        return unit;
     }
 
-    public Ingredient(long id, String name) {
-        this.id = id;
-        this.name = name;
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     @Override
     public String toString() {
         return "Ingredient{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
+                ", unit='" + unit + '\'' +
+                ", amount=" + amount +
                 '}';
     }
 }

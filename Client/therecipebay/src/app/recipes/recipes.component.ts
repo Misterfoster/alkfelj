@@ -14,11 +14,24 @@ export class RecipesComponent implements OnInit {
   url : string;
   actR : RecipeModel;
 
+  showPopup:boolean;
+
+  actualRecipe : RecipeModel;
+
 
   constructor(private http: Http) {  }
 
-  ngOnInit() {
+  onNotify(message:boolean):void {
+    this.showPopup = message;
+  }
 
+  onRecipe(message:any):void {
+    this.actualRecipe = message;
+    console.log("actre",this.actualRecipe);
+  }
+
+  ngOnInit() {
+    this.showPopup = false;
     let self = this;
     let actrecip = {"id": 0, "full_time":"","recipe_by":"","recipe_name":""};
 
@@ -38,6 +51,9 @@ export class RecipesComponent implements OnInit {
       })
     } );
 
+    this.recipeList.sort(function(a,b){
+      return (Number(a.full_time) - Number(b.full_time));
+    });
     console.log("receptlistafromdb",this.recipeList);
   }
 }

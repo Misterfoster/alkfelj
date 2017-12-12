@@ -16,6 +16,7 @@
 /* Modal Content */
 .modal-content {
   position: relative;
+  text-align:left;
   background-color: #fefefe;
   margin: auto;
   padding: 0;

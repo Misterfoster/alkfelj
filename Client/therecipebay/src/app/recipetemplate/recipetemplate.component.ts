@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { RecipeModel } from '../models/recipeModel';
 import {Http} from "@angular/http";
 import {fullRecipeModel} from "../models/fullRecipeModel";
@@ -14,7 +14,11 @@ export class RecipetemplateComponent implements OnInit {
   private contextRoot = 'http://localhost:8080/api'
   url : string;
 
+  @Input() showPopup;
   @Input() actrec;
+  @Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() recipeDetailEvent: EventEmitter<any> = new EventEmitter<any>();
+
 
   rm : fullRecipeModel ={
     id: 0,
@@ -32,7 +36,7 @@ export class RecipetemplateComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.actrec);
-
+    this.showPopup = false;
   }
 
   onExpand(event) : any {
@@ -48,7 +52,9 @@ export class RecipetemplateComponent implements OnInit {
       this.rm=res.json();
       //this.rm.id = res.json().id;
       console.log(this.rm);
-
+      this.recipeDetailEvent.emit(this.rm);
+      this.showPopup=true;
+      this.notify.emit(this.showPopup);
     });
 
 
