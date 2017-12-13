@@ -170,6 +170,25 @@ public class RecipeController {
         }
     }
 
+    @RequestMapping(value="/deleterecipe",method = RequestMethod.POST)
+    public boolean deleterecipe(@RequestBody String id) {
+
+        log.info("deleting recipe with id: "+id);
+
+        String query="delete from recipes where id='%s'";
+        query = String.format(query,id);
+        log.info("the query is: "+query);
+
+        try {
+            jdbcTemplate.execute(query);
+            log.info("successfully deleted recipe");
+            return true;
+        } catch (Exception e){
+            log.error("something went wrong");
+            return false;
+        }
+    }
+
     @RequestMapping(value="/addnewRecipe", method = RequestMethod.POST)
     public int addNewRecipe(@RequestBody Recipe recipe) {
 

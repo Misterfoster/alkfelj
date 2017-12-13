@@ -25,6 +25,11 @@ export class RecipesComponent implements OnInit {
     this.showPopup = message;
   }
 
+  onReload() :void{
+    this.recipeList =[];
+    this.ngOnInit();
+  }
+
   onRecipe(message:any):void {
     this.actualRecipe = message;
     console.log("actre",this.actualRecipe);
@@ -58,6 +63,8 @@ export class RecipesComponent implements OnInit {
 
   onHideRecipe($event) {
     this.showAddrecipe = false;
+    this.recipeList =[];
+    this.ngOnInit();
   }
 
   addRecipePopup() {

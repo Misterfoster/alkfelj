@@ -37,7 +37,7 @@
           <label>Preparation time: </label>
           <input [(ngModel)]="recipeModel.prepTime" class="form-control" type="text" placeholder="00:00:00"
                  name="preptime" required>
-          <label>Preparation time: </label>
+          <label>Cook time: </label>
           <input [(ngModel)]="recipeModel.cookTime" class="form-control" type="text" placeholder="00:00:00"
                  name="cooktime" required>
           <br>
@@ -45,7 +45,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-round" (click)="onSubmitRecipe()">Submit</button>
+        <button type="button" class="btn btn-default btn-round" (click)="onSubmitRecipe()">Submit</button>
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClose()">Close</button>
       </div>
     </div>

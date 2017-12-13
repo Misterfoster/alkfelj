@@ -9,5 +9,9 @@
        {{actrec.recipe_by}}
      </td>
      <td>
-       <button class="btn btn-primary btn-round expand-button" #elem [id]="actrec.id" type="button" (click)="onExpand($event)">Expand</button>
+       <div>
+         <button class="btn btn-primary btn-round expand-button" #elem [id]="actrec.id" type="button" (click)="onExpand($event)">Expand!</button>
+         <button class="btn btn-danger btn-round expand-button" #elem [id]="actrec.id" type="button" (click)="onDelete($event)">Delete!</button>
+       </div>
+
      </td>

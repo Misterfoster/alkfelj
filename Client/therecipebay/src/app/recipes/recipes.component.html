@@ -40,7 +40,7 @@ and open the template in the editor.
                 </thead>
 
 
-              <tr *ngFor="let recipe of recipeList"  [showPopup]="showPopup" [actrec]="recipe" (recipeDetailEvent)="onRecipe($event)" (notify)='onNotify($event)' recipetr></tr>
+              <tr *ngFor="let recipe of recipeList"  [showPopup]="showPopup" [actrec]="recipe" (recipeDetailEvent)="onRecipe($event)" (reloadRecipes)='onReload()' (notify)='onNotify($event)' recipetr></tr>
 
 
             </table>

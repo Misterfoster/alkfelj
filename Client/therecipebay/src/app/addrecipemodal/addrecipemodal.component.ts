@@ -71,6 +71,7 @@ export class AddrecipemodalComponent implements OnInit {
       this.http.post(this.contextRoot+this.url, {"id":res.text(),"ingredients":self.usedIngredients}).subscribe(res2 =>{
 
         console.log("response from addIngredientsforRecipes",res2.text());
+        this.hiderec.emit(false);
       });
     });
 

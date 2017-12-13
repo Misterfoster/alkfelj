@@ -18,6 +18,7 @@ export class RecipetemplateComponent implements OnInit {
   @Input() actrec;
   @Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() recipeDetailEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() reloadRecipes : EventEmitter<any> = new EventEmitter<any>();
 
 
   rm : fullRecipeModel ={
@@ -60,4 +61,16 @@ export class RecipetemplateComponent implements OnInit {
 
   }
 
+  onDelete(event) : any {
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+
+    this.url = "/deleterecipe";
+    this.http.post(this.contextRoot+this.url, value).subscribe(res => {
+      //console.log(res.json());
+
+      this.reloadRecipes.emit(true);
+    });
+  }
 }
