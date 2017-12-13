@@ -1,23 +1,14 @@
 package com.alkfejl.hu.Beadando.controllers;
 
-import com.alkfejl.hu.Beadando.BeadandoApplication;
-import com.alkfejl.hu.Beadando.models.*;
+import com.alkfejl.hu.Beadando.models.Ingredient;
+import com.alkfejl.hu.Beadando.models.IngredientConnection;
+import com.alkfejl.hu.Beadando.models.Recipe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
