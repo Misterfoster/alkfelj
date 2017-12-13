@@ -38,6 +38,7 @@ and open the template in the editor.
 
 
 		<div *ngIf="loggedin==true">
+      <div id="username" style="display:none">{{userField.username}}</div>
 			<h2>Hello {{userField.username}}</h2>
 			<app-recipes ></app-recipes>
 		</div>

@@ -1,63 +1,43 @@
 package com.alkfejl.hu.Beadando.models;
 
+import java.util.List;
+
 /**
  * Created by D on 2017. 12. 05..
  */
 public class IngredientConnection {
-    private long recipeId;
-    private long ingredientId;
-    private int amount;
-    private String unit;
+   private String id;
+   private List<Ingredient> ingredients;
 
-    public IngredientConnection(long recipeId, long ingredientId, int amount, String unit) {
-        this.recipeId = recipeId;
-        this.ingredientId = ingredientId;
-        this.amount = amount;
-        this.unit = unit;
+    public IngredientConnection(String id, List<Ingredient> ingredients) {
+        this.id = id;
+        this.ingredients = ingredients;
     }
 
     public IngredientConnection() {
     }
 
-    public long getRecipeId() {
-        return recipeId;
+    public String getId() {
+        return id;
     }
 
-    public void setRecipeId(long recipeId) {
-        this.recipeId = recipeId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public long getIngredientId() {
-        return ingredientId;
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setIngredientId(long ingredientId) {
-        this.ingredientId = ingredientId;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     @Override
     public String toString() {
         return "IngredientConnection{" +
-                "recipeId=" + recipeId +
-                ", ingredientId=" + ingredientId +
-                ", amount=" + amount +
-                ", unit='" + unit + '\'' +
+                "id='" + id + '\'' +
+                ", ingredients=" + ingredients +
                 '}';
     }
 }

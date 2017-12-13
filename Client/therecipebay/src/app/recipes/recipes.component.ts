@@ -12,7 +12,6 @@ export class RecipesComponent implements OnInit {
   recipeList : RecipeModel[] = [];
   contextRoot = 'http://localhost:8080/api'
   url : string;
-  actR : RecipeModel;
 
   showPopup:boolean;
 
@@ -47,7 +46,6 @@ export class RecipesComponent implements OnInit {
         actrecip["recipe_by"] = lines.ownerName;
         actrecip["recipe_name"] = lines.name;
 
-        self.actR = actrecip;
         self.recipeList.push(actrecip);
       })
     } );

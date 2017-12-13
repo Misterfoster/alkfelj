@@ -11,15 +11,35 @@
       <div class="modal-body">
         <form id="addrecipeform">
           <label>Details: </label>
-          <input [(ngModel)]="recipeModel.name" class="form-control" type="text" placeholder="Recipe name" name="uname" required>
-          <textarea [(ngModel)]="recipeModel.directions" class="form-control" type="text" placeholder="Directions" name="dirs" required></textarea>
+          <input [(ngModel)]="recipeModel.name" class="form-control" type="text" placeholder="Recipe name" name="uname"
+                 required>
+          <textarea  [(ngModel)]="recipeModel.directions" class="form-control" type="text" placeholder="Directions"
+                    name="dirs" required></textarea>
           <label>Ingredients: </label>
-
+          <select [(ngModel)]="selectedIngredient" name="select">
+            <option *ngFor="let ingredient of availableIngredients" [ngValue]="ingredient.name">{{ingredient.name}}
+            </option>
+          </select>
+          <label>Unit: </label>
+          <input [(ngModel)]="selectedUnit" style="width:50px" type="text" name="unit">
+          <label>Amount: </label>
+          <input [(ngModel)]="selectedAmount" style="width:40px" type="text" name="amount">
+          <button type="button" (click)="onAddExistingIngredient()" name="addbtn">Add</button>
           <br>
+          <label>New Ingredient:</label>
+          <input [(ngModel)]="newIngredientName" type="text" name="newingname">
+          <button type="button" (click)="onAddNewIngredient()" name="newingbtn">New</button>
+
+          <ul>
+            <li *ngFor="let ingredient of usedIngredients">{{ingredient.name}} : {{ingredient.amount}} {{ingredient.unit}}</li>
+          </ul>
+
           <label>Preparation time: </label>
-          <input [(ngModel)]="recipeModel.prepTime" class="form-control" type="text" placeholder="00:00:00" name="preptime" required>
+          <input [(ngModel)]="recipeModel.prepTime" class="form-control" type="text" placeholder="00:00:00"
+                 name="preptime" required>
           <label>Preparation time: </label>
-          <input [(ngModel)]="recipeModel.cookTime" class="form-control" type="text" placeholder="00:00:00" name="cooktime" required>
+          <input [(ngModel)]="recipeModel.cookTime" class="form-control" type="text" placeholder="00:00:00"
+                 name="cooktime" required>
           <br>
         </form>
 

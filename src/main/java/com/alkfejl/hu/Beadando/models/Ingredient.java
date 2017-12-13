@@ -4,6 +4,7 @@ package com.alkfejl.hu.Beadando.models;
  * Created by D on 2017. 12. 05..
  */
 public class Ingredient {
+    private String id;
     private String name;
     private String unit;
     private double amount;
@@ -12,6 +13,21 @@ public class Ingredient {
         this.name = name;
         this.unit = unit;
         this.amount = amount;
+    }
+
+    public Ingredient(String id, String name, String unit, double amount) {
+        this.id = id;
+        this.name = name;
+        this.unit = unit;
+        this.amount = amount;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Ingredient() {
