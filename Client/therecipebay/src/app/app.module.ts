@@ -9,6 +9,7 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipetemplateComponent } from './recipetemplate/recipetemplate.component';
 import { RecipedetailtemplateComponent } from './recipedetailtemplate/recipedetailtemplate.component';
+import { AddrecipemodalComponent } from './addrecipemodal/addrecipemodal.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RecipedetailtemplateComponent } from './recipedetailtemplate/recipedeta
     LoginpageComponent,
     RecipesComponent,
     RecipetemplateComponent,
-    RecipedetailtemplateComponent
+    RecipedetailtemplateComponent,
+    AddrecipemodalComponent
   ],
   imports: [
     BrowserModule,

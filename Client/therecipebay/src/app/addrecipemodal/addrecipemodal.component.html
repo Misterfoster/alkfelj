@@ -1,0 +1,34 @@
+<!-- Modal -->
+<div class="modal" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" (click)="onClose()">&times;</button>
+        <h2 class="modal-title">Add Recipe</h2>
+      </div>
+      <div class="modal-body">
+        <form id="addrecipeform">
+          <label>Details: </label>
+          <input [(ngModel)]="recipeModel.name" class="form-control" type="text" placeholder="Recipe name" name="uname" required>
+          <textarea [(ngModel)]="recipeModel.directions" class="form-control" type="text" placeholder="Directions" name="dirs" required></textarea>
+          <label>Ingredients: </label>
+
+          <br>
+          <label>Preparation time: </label>
+          <input [(ngModel)]="recipeModel.prepTime" class="form-control" type="text" placeholder="00:00:00" name="preptime" required>
+          <label>Preparation time: </label>
+          <input [(ngModel)]="recipeModel.cookTime" class="form-control" type="text" placeholder="00:00:00" name="cooktime" required>
+          <br>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-round" (click)="onSubmitRecipe()">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClose()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

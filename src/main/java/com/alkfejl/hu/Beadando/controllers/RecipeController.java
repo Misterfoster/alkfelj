@@ -128,4 +128,23 @@ public class RecipeController {
         return ingredients;
     }
 
+    @RequestMapping(value="/getingredients",method = RequestMethod.GET)
+    public List<String> getIngredientsByRecipeId() {
+
+        log.info("Querying for all ingredients");
+
+        String query="SELECT * from ingredients";
+
+        log.info("the query is: "+query);
+        List<String> ingredients = new ArrayList<>();
+        jdbcTemplate.query(query,
+                (rs, rowNum) ->
+                        rs.getString("name")
+        ).forEach(ing -> {
+            log.info(ing);
+            ingredients.add(ing);
+        });
+        return ingredients;
+    }
+
 }

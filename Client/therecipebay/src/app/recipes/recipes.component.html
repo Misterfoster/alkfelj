@@ -20,6 +20,7 @@ and open the template in the editor.
         <div id="main">
             <h1>Welcome to The Recipe Bay</h1>
             <h4>Your #1 source for recipes</h4>
+          <button style="width:100%" type="button" class="btn btn-primary btn-round" (click)="addRecipePopup()">Add new Recipe</button>
             <table class="recipe-table table table-bordered table-hover table-responsive">
               <thead>
               <tr>
@@ -44,6 +45,7 @@ and open the template in the editor.
 
             </table>
             <app-recipedetailtemplate [actualRecipe]="actualRecipe" (notify)='onNotify($event)' *ngIf="showPopup==true"></app-recipedetailtemplate>
+            <app-addrecipemodal (hiderec)='onHideRecipe($event)' *ngIf="showAddrecipe==true"></app-addrecipemodal>
 
             <h1>.</h1>
             <h1>.</h1>

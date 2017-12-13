@@ -17,6 +17,7 @@ export class RecipesComponent implements OnInit {
   showPopup:boolean;
 
   actualRecipe : RecipeModel;
+  showAddrecipe: boolean = false;
 
 
   constructor(private http: Http) {  }
@@ -55,5 +56,13 @@ export class RecipesComponent implements OnInit {
       return (Number(a.full_time) - Number(b.full_time));
     });
     console.log("receptlistafromdb",this.recipeList);
+  }
+
+  onHideRecipe($event) {
+    this.showAddrecipe = false;
+  }
+
+  addRecipePopup() {
+    this.showAddrecipe = true;
   }
 }
