@@ -21,9 +21,9 @@ Bejelentkezés után Az Új Recept Felvétele gomb lenyomása után egy felugró
 -A recept neve
 -Utasítások az elkészítéshez
 -Hozzávalók megadása
-	--Kétféleképpen teheti meg ezt:
-	--1. Az adatbázisban lévő hozzávalók kiválasztásával.
-	--2. Új hozzávaló megadásával ami külön eltárolódik az adatbázisban.
+	-Kétféleképpen teheti meg ezt:
+	-1. Az adatbázisban lévő hozzávalók kiválasztásával.
+	-2. Új hozzávaló megadásával ami külön eltárolódik az adatbázisban.
 -Előkészületi idő
 -Főzési/sütési idő
 
