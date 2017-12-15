@@ -18,14 +18,14 @@ Ha a megadott név+jelszó páros nincs az adatbázisban, hibaüzenet értesíti
 
 ##### Új recept felvétele:
 Bejelentkezés után Az Új Recept Felvétele gomb lenyomása után egy felugró ablak kéri a felhasználót hogy a következő adatokat adja meg a receptről:
-  -A recept neve
-  -Utasítások az elkészítéshez
-  -Hozzávalók megadása
-  -Kétféleképpen teheti meg ezt:
-    -1. Az adatbázisban lévő hozzávalók kiválasztásával.
-  -2. Új hozzávaló megadásával ami külön eltárolódik az adatbázisban.
-  -Előkészületi idő
-  -Főzési/sütési idő
+  - A recept neve
+  - Utasítások az elkészítéshez
+  - Hozzávalók megadása
+  - Kétféleképpen teheti meg ezt:
+    - 1. Az adatbázisban lévő hozzávalók kiválasztásával.
+    - 2. Új hozzávaló megadásával ami külön eltárolódik az adatbázisban.
+  - Előkészületi idő
+  - Főzési/sütési idő
 
 Miután megadta az adatokat a felhasználó az adatokat eltárolódik az adatbázisban.
 
